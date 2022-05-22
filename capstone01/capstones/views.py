@@ -22,3 +22,6 @@ def pipeInfo(request):
 
 def pipeCost(request):
     return render(request, 'capstones\\pipeCost.html')
+
+def generate(request):
+    return render(request, 'capstones\\generate.html')

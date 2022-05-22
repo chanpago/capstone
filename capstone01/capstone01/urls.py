@@ -28,6 +28,7 @@ urlpatterns = [
     path('detectResult/',views.detectResult, name='detectResult'),
     path('pipeInfo/',views.pipeInfo, name='pipeInfo'),
     path('pipeCost/',views.pipeCost, name='pipeCost'),
+    path('generate/',views.generate, name='generate'),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
