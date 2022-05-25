@@ -37,26 +37,26 @@
                                 <legend class="col-form-label col-sm-4 pt-0">하수관 종류</legend>
                                 <div class="col-sm-8">
                                     <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="콘크리트관" >
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="콘크리트관" onclick="addConcreteDiameter();" >
                                     <label class="form-check-label" for="gridRadios1">
                                         콘크리트관
                                     </label>
                                     </div>
                                     <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="강관">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="강관" onclick="addSteelDiameter();" >
                                     <label class="form-check-label" for="gridRadios2">
                                         강관
                                     </label>
                                     </div>
                                     <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="주철관" >
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="주철관" onclick="addIronDiameter();" >
                                     <label class="form-check-label" for="gridRadios3">
                                         주철관
                                     </label>
                                     </div>
         
                                     <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios4" value="플라스틱관" >
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios4" value="플라스틱관" onclick="addPlasticDiameter();" >
                                     <label class="form-check-label" for="gridRadios4">
                                         플라스틱관
                                     </label>
@@ -64,11 +64,17 @@
         
                                 </div>
                                 </fieldset>
-                            </form>
 
-                            <!-- <div class="show_btn">
-                                <button class="btn btn-outline-secondary btn-lg" onclick="showradio();">라디오 보기</button>
-                            </div>  -->
+                                <div class="row mb-3">                    
+                                    <label for="pipeDiameter" class="col-sm-4 col-form-label">파이프의 관경 (mm)</label>
+                                    <div class="col-sm-8">
+                                        <select class="pipe-diameter form-select form-select-sm"  id="pipeDiameter" aria-label=".form-select-sm example">
+                                           
+                                        
+                                          </select>
+                                    </div>
+                                </div>
+                            </form>
 
                             <div class="show_cost_btn">
                                 <a href="{% url 'pipeCost' %}" class="btn btn-outline-secondary btn-lg" onclick="showradio();">교체비용 보기</a>
@@ -83,13 +89,46 @@
     </main>
      
     <script> 
+    
+        function addConcreteDiameter(){
+            let htmlData = '';
+            for (var i = 300; i <=1200; i+=100) {
+                htmlData += '<option value="' + i + '">' + i+ 'mm</option>';
+            }
+            htmlData += '<option value="1350">1350mm</option>';
+            document.querySelector('.pipe-diameter').innerHTML = htmlData;
+        }        
 
-        // function showradio() {
-        //     var pipetype = $('input[name=gridRadios]:checked').val();
-        //    console.log(pipetype);
-        // }
-        
+        function addSteelDiameter(){
+            let htmlData = '';
+            for (var i = 300; i <=1200; i+=100) {
+                htmlData += '<option value="' + i + '">' + i+ 'mm</option>';
+            }
+            document.querySelector('.pipe-diameter').innerHTML = htmlData;
+        }    
+
+        function addIronDiameter(){
+            let htmlData = '';
+            htmlData += '<option value="80">80mm</option>';
+            htmlData += '<option value="100">100mm</option>';
+            htmlData += '<option value="150">150mm</option>';
+
+            for (var i = 200; i <=800; i+=100) {
+                htmlData += '<option value="' + i + '">' + i+ 'mm</option>';
+            }
+            document.querySelector('.pipe-diameter').innerHTML = htmlData;
+        }    
+
+        function addPlasticDiameter(){
+            let htmlData = '';
+            for (var i = 200; i <=1200; i+=100) {
+                htmlData += '<option value="' + i + '">' + i+ 'mm</option>';
+            }
+            document.querySelector('.pipe-diameter').innerHTML = htmlData;
+        }     
+                   
     </script>
+    
     <script src="{% static 'javascript/javascript.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
