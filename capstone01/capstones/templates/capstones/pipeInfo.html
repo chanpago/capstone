@@ -87,49 +87,8 @@
         </section>
            
     </main>
-     
-    <script> 
-    
-        function addConcreteDiameter(){
-            let htmlData = '';
-            for (var i = 300; i <=1200; i+=100) {
-                htmlData += '<option value="' + i + '">' + i+ 'mm</option>';
-            }
-            htmlData += '<option value="1350">1350mm</option>';
-            document.querySelector('.pipe-diameter').innerHTML = htmlData;
-        }        
-
-        function addSteelDiameter(){
-            let htmlData = '';
-            for (var i = 300; i <=1200; i+=100) {
-                htmlData += '<option value="' + i + '">' + i+ 'mm</option>';
-            }
-            document.querySelector('.pipe-diameter').innerHTML = htmlData;
-        }    
-
-        function addIronDiameter(){
-            let htmlData = '';
-            htmlData += '<option value="80">80mm</option>';
-            htmlData += '<option value="100">100mm</option>';
-            htmlData += '<option value="150">150mm</option>';
-
-            for (var i = 200; i <=800; i+=100) {
-                htmlData += '<option value="' + i + '">' + i+ 'mm</option>';
-            }
-            document.querySelector('.pipe-diameter').innerHTML = htmlData;
-        }    
-
-        function addPlasticDiameter(){
-            let htmlData = '';
-            for (var i = 200; i <=1200; i+=100) {
-                htmlData += '<option value="' + i + '">' + i+ 'mm</option>';
-            }
-            document.querySelector('.pipe-diameter').innerHTML = htmlData;
-        }     
-                   
-    </script>
-    
-    <script src="{% static 'javascript/javascript.js' %}"></script>
+ 
+    <script src="{% static 'javascript/pipeDiameter.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 
