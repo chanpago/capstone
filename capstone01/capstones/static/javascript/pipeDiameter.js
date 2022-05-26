@@ -49,10 +49,10 @@ function calcCost(){
     var diameter = d.options[d.selectedIndex].value;
 
     var radio2 = document.getElementsByName('inlineRadioOptions');
-    var result2=0;
+    var pavement=0;
     radio2.forEach((node) => {
             if(node.checked)  {
-                result2 =node.value;
+                pavement =node.value;
             }
         }) 
 
@@ -60,9 +60,9 @@ function calcCost(){
     
     radio.forEach((node) => {
         if(node.checked)  {
-            var result =node.value;
-            if(result == "concrete"){
-                if(result2==1){
+            var pipetype =node.value;
+            if(pipetype == "콘크리트관"){
+                if(pavement=="비포장"){
                     if(diameter==300){cost = 512740*length;}
                     else if(diameter==400){cost = 580188*length;}
                     else if(diameter==500){cost = 624861*length;}
@@ -92,8 +92,8 @@ function calcCost(){
                 }
                 
             }
-            else if(result == "steel"){
-                if(result2==1){
+            else if(pipetype == "강관"){
+                if(pavement=="비포장"){
                     if(diameter==300){cost = 707247 *length;}
                     else if(diameter==400){cost = 827275 *length;}
                     else if(diameter==500){cost = 935411 *length;}
@@ -118,8 +118,8 @@ function calcCost(){
                     else if(diameter==1200){cost = 2612176 *length;}
                 }                
             } 
-            else if(result == "iron"){
-                if(result2==1){
+            else if(pipetype == "주철관"){
+                if(pavement=="비포장"){
                     if(diameter==80){cost = 91404 *length;}
                     else if(diameter==100){cost = 102960 *length;}
                     else if(diameter==150){cost = 139786 *length;}
@@ -145,7 +145,7 @@ function calcCost(){
                 } 
             } 
             else{
-                if(result2==1){
+                if(pavement=="비포장"){
                     if(diameter==200){cost = 476678 *length;}
                     else if(diameter==300){cost = 525101 *length;}
                     else if(diameter==400){cost = 625778 *length;}
@@ -172,26 +172,34 @@ function calcCost(){
             }
         }
     }) 
-        console.log(cost);
+        return cost;
 }
 
-      // function show(){
-        //     const length = document.getElementById("pipeLength").value;
-        //     console.log(length);
-        // }
-        // function show2(){
-        //     var d = document.getElementById("pipeDiameter");
-        //     var diameter = d.options[d.selectedIndex].value;
-        //     console.log(diameter);
-        // }
-        // function show3(){
-        //     var result2=0;
-        //     var radio2 = document.getElementsByName('inlineRadioOptions');
-        //     radio2.forEach((node) => {
-        //             if(node.checked)  {
-        //                 result2 =node.value;
-                        
-        //             }
-        //         }) 
-        //         console.log(result2);
-        // }
+
+function showCost(){
+    var length = document.getElementById("pipeLength").value;
+    var radio = document.getElementsByName('gridRadios');
+    var pipetype;
+    radio.forEach((node) => {
+        if(node.checked)  {
+            pipetype =node.value;
+        }
+    }) 
+
+    var d = document.getElementById("pipeDiameter");
+    var diameter = d.options[d.selectedIndex].value;
+
+    var radio2 = document.getElementsByName('inlineRadioOptions');
+    var pavement;
+    radio2.forEach((node) => {
+            if(node.checked)  {
+                pavement=node.value;
+            }
+        }) 
+    var cost=0;
+    cost=calcCost();
+
+    let htmlData = '';
+    htmlData += '<h5>'+pavement+' 도로에서 파이프 관경이 '+diameter+'mm인 '+pipetype+ ' ' +length+'m의 예상교체비용은 ' +cost+'원입니다!</h5>';
+    document.querySelector('.cost-result').innerHTML = htmlData;
+}     

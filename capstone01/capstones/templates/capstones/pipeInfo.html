@@ -39,26 +39,26 @@
                                     <legend class="col-form-label col-sm-4 pt-0">하수관 종류</legend>
                                     <div class="col-sm-8">
                                         <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="concrete" onclick="addConcreteDiameter();" >
+                                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="콘크리트관" onclick="addConcreteDiameter();" >
                                         <label class="form-check-label" for="gridRadios1">
                                             콘크리트관
                                         </label>
                                         </div>
                                         <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="steel" onclick="addSteelDiameter();" >
+                                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="강관" onclick="addSteelDiameter();" >
                                         <label class="form-check-label" for="gridRadios2">
                                             강관
                                         </label>
                                         </div>
                                         <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="iron" onclick="addIronDiameter();" >
+                                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="주철관" onclick="addIronDiameter();" >
                                         <label class="form-check-label" for="gridRadios3">
                                             주철관
                                         </label>
                                         </div>
             
                                         <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios4" value="plastic" onclick="addPlasticDiameter();" >
+                                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios4" value="플라스틱관" onclick="addPlasticDiameter();" >
                                         <label class="form-check-label" for="gridRadios4">
                                             플라스틱관
                                         </label>
@@ -81,11 +81,11 @@
                                     <legend class="col-form-label col-sm-4 pt-0">도로 포장 상태</legend>
                                     <div class="col-sm-8">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="비포장">
                                             <label class="form-check-label" for="inlineRadio1">비포장 도로</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="포장">
                                             <label class="form-check-label" for="inlineRadio2">포장 도로</label>
                                           </div>                                                  
                                     </div>
@@ -94,17 +94,30 @@
 
                             </form>
 
-                            <button type="button" onclick='calcCost();'>확인1</button>
-                            
-
                             <div class="show_cost_btn">
-                                <a href="{% url 'pipeCost' %}" class="btn btn-outline-secondary btn-lg">교체비용 보기</a>
+                                <a href="#page2" class="btn btn-outline-secondary btn-lg" onclick="showCost();">교체비용 보기</a>
                             </div> 
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        <section  id="page2">
+            <div class="pipe_cost_pg">
+                <h2><i class="bi bi-coin"></i> 하수관 교체 예상 비용 <i class="bi bi-coin"></i> </h2>       
+                
+                
+                <hr> 
+                
+                <div class="cost-result" style="margin-top:150px"></div>
+                
+                <div class="gohome_btn">
+                    <a href="{% url 'index' %}" class="btn btn-outline-secondary btn-lg ">홈으로 돌아가기</a>
+                </div>
+            </div>
+           
+        </section>
+           
            
     </main>
     

@@ -148,7 +148,7 @@ detectResult.html
 }
 
 /*
-pipeExchange.html
+pipeInfo.html
 */
 .pipe_info_pg>hr{
     margin:30px auto 30px auto;
@@ -163,9 +163,6 @@ pipeExchange.html
     padding : 20px 50px 20px 50px;
 }
 
-/*
-pipeCost.html
-*/
 .pipe_cost_pg>hr{
     margin:30px auto 30px auto;
     width:80%;
