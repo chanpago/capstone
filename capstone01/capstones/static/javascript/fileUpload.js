@@ -2,7 +2,7 @@ var selFile = document.querySelector("input[type=file]");
       
 /* 첨부파일 추가 */
 function addFile(obj){
-  var maxFileCnt = 5; // 첨부파일 최대 개수
+  var maxFileCnt = 100; // 첨부파일 최대 개수
   var curFileCnt = obj.files.length; // 현재 선택된 첨부파일 개수
 
   var files = obj.files;
@@ -10,7 +10,7 @@ function addFile(obj){
 
 
     if (curFileCnt > maxFileCnt) {
-      alert("첨부파일은 최대 " + maxFileCnt + "개 까지 첨부 가능합니다.\n 5개 이내로 다시 선택해주세요.");
+      alert("첨부파일은 최대 " + maxFileCnt + "개 까지 첨부 가능합니다.\n 100개 이내로 다시 선택해주세요.");
       document.querySelector('.file-list').innerHTML = htmlData;
     } 
     else {
