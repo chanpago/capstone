@@ -11,11 +11,14 @@
 
             if(progressNumber=="100"){
                 clearInterval(intervalId);
+
+                //버튼 동작
+                $('.btn-outline-secondary').unbind('click');
                 document.getElementById('icon2').innerHTML='<i class="bi2 bi-check-circle"></i>';
             }
     },100);
 
-
+  
 
     // const a =  document.querySelector('.progress-bar');
     // a.addEventListener(showIcon());
