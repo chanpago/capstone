@@ -198,26 +198,31 @@ function showCost(){
         }) 
     var cost=0;
     cost=Math.round(calcCost()/10000);
-
-    let htmlData = '';
-    htmlData += '<div class="container px-4 px-lg-5">';
-    htmlData += '<table class="table">';
-    htmlData += '<thead><tr><th scope="col">하수관 정보</th><th scope="col">입력한 정보</th></tr></thead>';
-    htmlData += '<tbody>';
-    htmlData += '<tr><th scope="row">파이프 총 길이</th><td>'+length+'m</td></tr>';
-    htmlData += '<tr><th scope="row">하수관 종류</th><td>'+pipetype+'</td></tr>';
-    htmlData += '<tr><th scope="row">파이프의 관경</th><td>'+diameter+'mm</td></tr>';
-    htmlData += '<tr><th scope="row">도로 포장 상태</th><td>'+pavement+'도로</td></tr>';
-    htmlData += '<tr style="border-top:solid 2px black"><th scope="row">예상 교체 비용</th><td>약 '+cost+'만원</td></tr>';
-    htmlData += '</tbody>';
-    htmlData += '</table>';
-    htmlData += '</div>';
-
-
-   // htmlData += '<h5>'+pavement+' 도로에서 파이프 관경이 '+diameter+'mm인 '+pipetype+ ' ' +length+'m의 예상교체비용은 ' +cost+'원입니다!</h5>';
-    document.querySelector('.cost-result').innerHTML = htmlData;
-}     
-
-function costTable(){
     
-}
+    if(!length||!pipetype||diameter=='파이프 관경을 선택해주세요' ||!pavement){
+        alert("하수관의 정보를 빠짐없이 입력해주세요!");
+    }else{
+        let htmlData = '';
+        htmlData += '<div class="container px-4 px-lg-5">';
+        htmlData += '<table class="table">';
+        htmlData += '<thead><tr><th scope="col">하수관 정보</th><th scope="col">입력한 정보</th></tr></thead>';
+        htmlData += '<tbody>';
+        htmlData += '<tr><th scope="row">파이프 총 길이</th><td>'+length+'m</td></tr>';
+        htmlData += '<tr><th scope="row">하수관 종류</th><td>'+pipetype+'</td></tr>';
+        htmlData += '<tr><th scope="row">파이프의 관경</th><td>'+diameter+'mm</td></tr>';
+        htmlData += '<tr><th scope="row">도로 포장 상태</th><td>'+pavement+'도로</td></tr>';
+        htmlData += '<tr style="border-top:solid 2px black"><th scope="row">예상 교체 비용</th><td>약 '+cost+'만원</td></tr>';
+        htmlData += '</tbody>';
+        htmlData += '</table>';
+        htmlData += '</div>';
+
+        document.location.href='#page2';
+        
+        // 홈버튼 활성화
+        const target = document.getElementById('gohomeBtn');
+        target.disabled = false;
+
+        document.querySelector('.cost-result').innerHTML = htmlData;
+    }
+ 
+}     
