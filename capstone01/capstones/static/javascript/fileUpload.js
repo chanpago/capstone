@@ -14,19 +14,46 @@ function addFile(obj){
       document.querySelector('.file-list').innerHTML = htmlData;
     } 
     else {
-        
-        for (var i = 0; i < files.length; i++) {
-            const file = files[i];
-            // 목록 추가
-            htmlData += '<div id="file' + i + '" class="filebox">';
-            htmlData += '   <p class="name">' + file.name + '</p>';
-            htmlData += '   <a class="delete" onclick="jsFunc.deleteFile(' + i + ');"><i class="far fa-minus-square"></i></a>';
-            htmlData += '</div>';
+        for (const file of obj.files) {
+            // 첨부파일 검증
+            if (validation(file)) {
+                for (var i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    // 목록 추가
+                    htmlData += '<div id="file' + i + '" class="filebox">';
+                    htmlData += '   <p class="name">' + file.name + '</p>';
+                    htmlData += '   <a class="delete" onclick="jsFunc.deleteFile(' + i + ');"><i class="far fa-minus-square"></i></a>';
+                    htmlData += '</div>';
+                }
+                document.querySelector('.file-list').innerHTML = htmlData;
+            } else {
+                continue;
+            }
         }
-        document.querySelector('.file-list').innerHTML = htmlData;
+
+       
     }
 }
-
+// 파일 검증
+function validation(obj){
+    const fileTypes = ['image/gif', 'image/jpeg', 'image/png', 'image/bmp', 'image/tif'];
+    // if (obj.name.length > 100) {
+    //     alert("파일명이 100자 이상인 파일은 제외되었습니다.");
+    //     return false;
+    // } else if (obj.size > (100 * 1024 * 1024)) {
+    //     alert("최대 파일 용량인 100MB를 초과한 파일은 제외되었습니다.");
+    //     return false;
+    // } else 
+    if (obj.name.lastIndexOf('.') == -1) {
+        alert("확장자가 없는 파일은 제외되었습니다.");
+        return false;
+    } else if (!fileTypes.includes(obj.type)) {
+        alert("첨부가 불가능한 파일은 제외되었습니다.");
+        return false;
+    } else {
+        return true;
+    }
+}
 /* 첨부파일 삭제 */
 function deleteFile(num) {
     var dt = new DataTransfer()
